@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Benjamín Vallejo Calizaya</title>
+<meta name="description" content="Estudiante de Economía, Universidad de Chile. Organización industrial y economía ambiental.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf9f6; --fg: #1d1d1b; --muted: #6b6a66; --rule: #dcdad3; --accent: #7a2e1f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #161615; --fg: #e8e6e0; --muted: #9a988f; --rule: #33322f; --accent: #e08a6e; }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: "Source Serif 4", Georgia, serif; font-size: 18px; line-height: 1.6;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+  header { padding: 64px 0 24px; }
+  h1 { font-weight: 600; font-size: 2.1rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .sub { color: var(--muted); margin: 0 0 20px; }
+  .links { font-family: "IBM Plex Mono", monospace; font-size: 0.82rem; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  nav {
+    position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--rule);
+    font-family: "IBM Plex Mono", monospace; font-size: 0.82rem; z-index: 2;
+  }
+  nav .wrap { display: flex; gap: 20px; overflow-x: auto; padding-top: 12px; padding-bottom: 12px; }
+  nav a { color: var(--muted); white-space: nowrap; }
+  nav a:hover { color: var(--fg); text-decoration: none; }
+  section { padding: 40px 0 8px; }
+  h2 {
+    font-family: "IBM Plex Mono", monospace; font-weight: 400; font-size: 0.85rem;
+    text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted);
+    border-bottom: 1px solid var(--rule); padding-bottom: 8px; margin: 0 0 20px;
+  }
+  h3 { font-size: 0.95rem; font-weight: 600; color: var(--muted); margin: 28px 0 8px; }
+  .item { margin: 0 0 22px; }
+  .item .t { font-weight: 600; }
+  .item .m { color: var(--muted); font-size: 0.9rem; font-style: italic; }
+  .item p { margin: 4px 0 0; }
+  .item .l { font-family: "IBM Plex Mono", monospace; font-size: 0.78rem; margin-top: 4px; }
+  .item .l a { margin-right: 14px; }
+  .empty { color: var(--muted); font-style: italic; }
+  .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+  .gallery img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; }
+  footer { color: var(--muted); font-size: 0.8rem; padding: 48px 0; font-family: "IBM Plex Mono", monospace; }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <h1>Benjamín Vallejo Calizaya</h1>
+  <p class="sub">Estudiante de Ingeniería Comercial, mención Economía, Universidad de Chile.<br>
+  Organización industrial, economía ambiental y de la conservación.</p>
+  <div class="links">
+    <a href="mailto:bvallejo@fen.uchile.cl">bvallejo@fen.uchile.cl</a>
+    <a href="https://github.com/bvallejoc">github.com/bvallejoc</a>
+    <a href="cv/cv_benjamin_vallejo.pdf">CV (PDF)</a>
+  </div>
+</header>
+
+<nav><div class="wrap">
+  <a href="#sobre-mi">Sobre mí</a>
+  <a href="#investigacion">Investigación</a>
+  <a href="#escritos">Escritos</a>
+  <a href="#codigo">Código</a>
+  <a href="#fotografia">Fotografía</a>
+</div></nav>
+
+<main class="wrap">
+
+<section id="sobre-mi">
+  <h2>Sobre mí</h2>
+  <p>Estudio economía en la Facultad de Economía y Negocios de la Universidad de Chile, donde curso el primer semestre del Magíster en Análisis Económico mediante articulación. Me interesa la organización industrial y su aplicación a problemas ambientales: cómo la estructura de mercado, la regulación y la fiscalización afectan la conservación de recursos naturales.</p>
+  <p>Trabajo con R, Stata, SQL y Power BI.</p>
+</section>
+
+<section id="investigacion">
+  <h2>Investigación</h2>
+  <div id="investigacion-list"></div>
+</section>
+
+<section id="escritos">
+  <h2>Escritos</h2>
+  <div id="escritos-list"></div>
+</section>
+
+<section id="codigo">
+  <h2>Código</h2>
+  <div id="codigo-list"></div>
+</section>
+
+<section id="fotografia">
+  <h2>Fotografía</h2>
+  <div id="fotografia-list" class="gallery"></div>
+</section>
+
+</main>
+
+<footer class="wrap">© Benjamín Vallejo Calizaya</footer>
+
+<script>
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function renderItems(el, items) {
+  if (!items || !items.length) { el.innerHTML = '<p class="empty">Próximamente.</p>'; return; }
+  el.innerHTML = items.map(it => `
+    <div class="item">
+      <div class="t">${esc(it.titulo)}</div>
+      ${it.meta ? `<div class="m">${esc(it.meta)}</div>` : ""}
+      ${it.resumen ? `<p>${esc(it.resumen)}</p>` : ""}
+      ${it.links && it.links.length ? `<div class="l">${it.links.map(l => `<a href="${esc(l.url)}">${esc(l.texto)}</a>`).join("")}</div>` : ""}
+    </div>`).join("");
+}
+
+function renderGrouped(el, items) {
+  if (!items || !items.length) { el.innerHTML = '<p class="empty">Próximamente.</p>'; return; }
+  const groups = {};
+  items.forEach(it => { (groups[it.area || "Otros"] ||= []).push(it); });
+  el.innerHTML = "";
+  Object.entries(groups).forEach(([area, list]) => {
+    const h = document.createElement("h3"); h.textContent = area; el.appendChild(h);
+    const d = document.createElement("div"); renderItems(d, list); el.appendChild(d);
+  });
+}
+
+fetch("data/contenido.json")
+  .then(r => r.json())
+  .then(d => {
+    renderItems(document.getElementById("investigacion-list"), d.investigacion);
+    renderGrouped(document.getElementById("escritos-list"), d.escritos);
+    renderItems(document.getElementById("codigo-list"), d.codigo);
+    const g = document.getElementById("fotografia-list");
+    if (d.fotografia && d.fotografia.length) {
+      g.innerHTML = d.fotografia.map(f => `<img src="${esc(f.archivo)}" alt="${esc(f.descripcion)}" loading="lazy">`).join("");
+    } else {
+      g.outerHTML = '<p class="empty">Próximamente.</p>';
+    }
+  })
+  .catch(() => {});
+</script>
+</body>
+</html>
