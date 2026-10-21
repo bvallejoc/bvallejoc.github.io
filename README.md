@@ -1,4 +1,4 @@
-# bvallejoc.github.io
+# Benjamin Vallejo
 
 Esta pagina se utilizara como repositorio de trabajos que he hecho a lo largo de la carrera, ya sea investigacion, columnas de opinion, ensayos, etc. 
 
