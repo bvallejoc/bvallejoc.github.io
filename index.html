@@ -71,6 +71,7 @@
   <a href="#sobre-mi">Sobre mí</a>
   <a href="#investigacion">Investigación</a>
   <a href="#escritos">Escritos</a>
+  <a href="#problem-sets">Problem sets</a>
   <a href="#codigo">Código</a>
   <a href="#fotografia">Fotografía</a>
 </div></nav>
@@ -91,6 +92,11 @@
 <section id="escritos">
   <h2>Escritos</h2>
   <div id="escritos-list"></div>
+</section>
+
+<section id="problem-sets">
+  <h2>Problem sets</h2>
+  <div id="problem-sets-list"></div>
 </section>
 
 <section id="codigo">
@@ -121,10 +127,10 @@ function renderItems(el, items) {
     </div>`).join("");
 }
 
-function renderGrouped(el, items) {
+function renderGrouped(el, items, key = "area") {
   if (!items || !items.length) { el.innerHTML = '<p class="empty">Próximamente.</p>'; return; }
   const groups = {};
-  items.forEach(it => { (groups[it.area || "Otros"] ||= []).push(it); });
+  items.forEach(it => { (groups[it[key] || "Otros"] ||= []).push(it); });
   el.innerHTML = "";
   Object.entries(groups).forEach(([area, list]) => {
     const h = document.createElement("h3"); h.textContent = area; el.appendChild(h);
@@ -137,6 +143,7 @@ fetch("data/contenido.json")
   .then(d => {
     renderItems(document.getElementById("investigacion-list"), d.investigacion);
     renderGrouped(document.getElementById("escritos-list"), d.escritos);
+    renderGrouped(document.getElementById("problem-sets-list"), d.problem_sets, "ramo");
     renderItems(document.getElementById("codigo-list"), d.codigo);
     const g = document.getElementById("fotografia-list");
     if (d.fotografia && d.fotografia.length) {
